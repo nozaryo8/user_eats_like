@@ -1,7 +1,7 @@
 module Api
   module V1
     class LineFoodsController < ApplicationController
-      before_action :set_food, only: [:create]
+      before_action :set_food, only: [:create,:replace]
 
       #フードをひとつずつ追加していく
       def create
@@ -37,6 +37,23 @@ module Api
         else
           #リクエストは成功したが、空データとして204を返す
           render json: {}, status: :no_content
+        end
+      end
+
+      def replace
+        #他店舗のLineFood一つずつに対してupdate_attributeで更新する
+        LineFood.active.other_restaurant(@ordered_food.restaurant.id).each do |line_food|
+          line_food.update_attribute(:active, false)
+        end
+
+        set_line_food(@ordered_food)
+
+        if @line_food.save
+          render json: {
+            line_food: @line_food
+          }, status: :created
+        else
+          render json: {}, status: :internal_server_error
         end
       end
 
