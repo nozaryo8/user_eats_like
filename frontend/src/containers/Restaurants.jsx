@@ -1,10 +1,12 @@
 import React, { Fragment, useReducer, useEffect } from 'react';
+
 // styled-componentsを使えるようにする
 import styled from 'styled-components';
 
+// React Routerにおけるリンク
 import { Link } from "react-router-dom";
 
-// components
+// components 「ロード状態」を表すUIパーツ
 import Skeleton from '@material-ui/lab/Skeleton';
 
 // apis
