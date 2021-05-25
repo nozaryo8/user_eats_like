@@ -5,7 +5,7 @@ import React, { Fragment, useEffect, useReducer } from 'react';
 //後ほどinitialStateという名前のオブジェクトが登場するため
 import {
   initialState as foodsInitialState,
-  foodsActionTyps,
+  foodsActionTypes,
   foodsReducer,
 } from '../reducers/foods';
 
@@ -20,11 +20,11 @@ export const Foods = ({
 }) => {
   const [foodsState, dispatch] = useReducer(foodsReducer, foodsInitialState);
   useEffect(() => {
-    dispatch({ type: foodsActionTyps.FETCHING });
+    dispatch({ type: foodsActionTypes.FETCHING });
     fetchFoods(match.params.restaurantsId)
       .then((data) => {
         dispatch({
-          type: foodsActionTyps.FETCH_SUCCESS,
+          type: foodsActionTypes.FETCH_SUCCESS,
           payload: {
             foods: data.foods
           }
