@@ -6,7 +6,7 @@ export const initialState = {
   lineFoodsSummary: null,            // 仮注文データ
 };
 
-export const lineFoodsActionTyps = {
+export const lineFoodsActionTypes = {
   FETCHING: 'FETCHING',
   FETCH_SUCCESS: 'FETCH_SUCCESS',
   POSTING: 'POSTING',
@@ -15,22 +15,22 @@ export const lineFoodsActionTyps = {
 
 export const lineFoodsReducer = (state, action) => {
   switch (action.type) {
-    case lineFoodsActionTyps.FETCHING:
+    case lineFoodsActionTypes.FETCHING:
       return {
         ...state,
         fetchState: REQUEST_STATE.LOADING,
       };
-    case lineFoodsActionTyps.FETCH_SUCCESS:
+    case lineFoodsActionTypes.FETCH_SUCCESS:
       return {
         fetchState: REQUEST_STATE.OK,
         lineFoodsSummary: action.payload.lineFoodsSummary,
       };
-    case lineFoodsActionTyps.POSTING:
+    case lineFoodsActionTypes.POSTING:
       return {
         ...state,
         postState: REQUEST_STATE.LOADING,
       };
-    case lineFoodsActionTyps.POST_SUCCESS:
+    case lineFoodsActionTypes.POST_SUCCESS:
       return {
         ...state,
         postState: REQUEST_STATE.OK,
