@@ -117,7 +117,9 @@ export const Orders = () => {
                 disabled={state.postState === REQUEST_STATE.LOADING || state.postState === REQUEST_STATE.OK}
               >
                 {orderButtonLabel()}
+
               </OrderButton>
+
             }
             {
               state.fetchState === REQUEST_STATE.OK && !(state.lineFoodsSummary) &&
